@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Sk/Ai Browser — UI spike</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main class="app ai-open" id="app">
+    <header class="chrome">
+      <div class="tab-row">
+        <div class="tab active" aria-current="page">
+          <span class="tab-favicon">◌</span><span class="tab-title">Новая вкладка</span><button class="tab-close" aria-label="Закрыть вкладку">×</button>
+        </div>
+        <button class="new-tab" aria-label="Новая вкладка" title="Новая вкладка">+</button>
+        <div class="window-space"></div>
+        <button class="chrome-icon" aria-label="Свернуть">−</button><button class="chrome-icon" aria-label="Развернуть">□</button><button class="chrome-icon close" aria-label="Закрыть">×</button>
+      </div>
+      <div class="toolbar">
+        <button class="round-icon" title="Назад" aria-label="Назад">‹</button>
+        <button class="round-icon" title="Вперёд" aria-label="Вперёд">›</button>
+        <button class="round-icon" title="Обновить" aria-label="Обновить">↻</button>
+        <button class="round-icon home" title="Домой" aria-label="Домой">⌂</button>
+        <form class="address" id="address-form">
+          <span class="lock">◉</span><input id="address" aria-label="Адрес или поисковый запрос" value="Поиск или введите адрес" spellcheck="false">
+          <button class="address-go" type="submit" aria-label="Открыть">↵</button>
+        </form>
+        <button class="toolbar-action" id="theme-button" aria-label="Переключить тему" title="Переключить тему">◐</button>
+        <button class="toolbar-action active" id="panel-toggle" aria-label="Скрыть ИИ-панель" title="ИИ-панель">✦</button>
+        <button class="avatar" aria-label="Профиль">S</button>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <section class="site-area" aria-label="Область веб-страницы">
+        <div class="site-stage">
+          <div class="stage-orbit orbit-one"></div><div class="stage-orbit orbit-two"></div>
+          <div class="welcome-card">
+            <div class="eyebrow"><span class="status-dot"></span> UI-ПРОТОТИП · STAGE 0</div>
+            <div class="hero-mark"><span>Sk</span><span class="hero-slash">/</span><span class="hero-ai">Ai</span></div>
+            <h1>Спокойное пространство<br>для открытого интернета</h1>
+            <p>Здесь появится веб-движок. Сейчас проверяем только интерфейс: вкладки, адресную строку и соседство страницы с ИИ-панелью.</p>
+            <div class="search-preview"><span>⌕</span><span>Начните поиск в адресной строке</span><kbd>Ctrl K</kbd></div>
+            <div class="quick-links"><button><span class="link-icon purple">◉</span><span>Часто посещаемые</span></button><button><span class="link-icon blue">✦</span><span>Закладки</span></button><button><span class="link-icon mint">↓</span><span>Загрузки</span></button></div>
+          </div>
+          <div class="stage-note">ПОЛЕ САЙТА · ДВИЖОК НЕ ПОДКЛЮЧЁН</div>
+        </div>
+      </section>
+
+      <aside class="ai-panel" aria-label="ИИ-панель" id="ai-panel">
+        <div class="resize-handle" id="resize-handle" role="separator" aria-label="Изменить ширину ИИ-панели" aria-orientation="vertical" tabindex="0"></div>
+        <div class="panel-header">
+          <div class="panel-brand"><span class="mark-slash">/</span><span class="brand-ai">Ai</span><span class="glow"></span></div>
+          <div class="panel-heading"><span>Sk/Ai помощник</span><span class="online-dot" title="Локальный интерфейс прототипа"></span></div>
+          <button class="panel-more" aria-label="Меню ИИ-панели">···</button>
+        </div>
+        <div class="model-row">
+          <button class="model-picker" id="model-picker" aria-label="Выбрать режим ИИ"><span class="model-spark">✦</span><span id="model-name">Выбор модели</span><span class="model-chevron">⌄</span></button>
+          <span class="mode-pill"><span class="mode-dot"></span> демо</span>
+        </div>
+        <div class="chat-scroll" id="chat-scroll">
+          <div class="date-divider"><span>НОВЫЙ ДИАЛОГ</span></div>
+          <div class="assistant-row">
+            <div class="assistant-avatar">/Ai</div>
+            <div class="assistant-content"><div class="assistant-label">Sk/Ai <span>· прототип</span></div>
+              <div class="message assistant-message">Привет! Я помогу разобраться со страницей, найти ответы и управлять браузером — с твоего разрешения.<br><br>Сейчас подключён только интерфейсный прототип, поэтому я не отправляю запросы модели.</div>
+            </div>
+          </div>
+          <div class="suggestion-label">ПОПРОБУЙТЕ СПРОСИТЬ</div>
+          <div class="suggestions"><button data-prompt="Что умеет этот прототип?">Что умеет этот прототип?</button><button data-prompt="Как устроено управление шириной панели?">Настроить панель</button></div>
+        </div>
+        <div class="composer-wrap">
+          <div class="composer" id="composer-box">
+            <textarea id="message-input" rows="2" placeholder="Напишите сообщение…" aria-label="Сообщение"></textarea>
+            <div class="composer-actions"><button class="composer-tool" id="mic-button" aria-label="Голосовой ввод недоступен в прототипе" title="Голос не подключён">♩</button><span class="composer-hint">Enter — отправить</span><button class="send-button" id="send-button" aria-label="Отправить сообщение">↑</button></div>
+          </div>
+          <div class="privacy-note"><span>◈</span> Демо · сообщение не отправляется в сеть</div>
+        </div>
+      </aside>
+    </section>
+    <footer class="statusbar"><span><i></i>Интерфейсный прототип</span><span>Движок · ИИ · Голос не подключены</span><button id="settings-button">Настройки</button></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
